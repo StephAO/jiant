@@ -16,7 +16,7 @@ from allennlp.common.checks import ConfigurationError
 from allennlp.common.params import Params
 from allennlp.modules.seq2seq_encoders.seq2seq_encoder import Seq2SeqEncoder
 from allennlp.nn.util import device_mapping, masked_softmax
-from nltk.tokenize.moses import MosesDetokenizer
+from mosestokenizer import MosesDetokenizer
 from torch.autograd import Variable
 from torch.nn import Dropout, Linear, Parameter, init
 

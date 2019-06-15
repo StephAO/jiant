@@ -1,6 +1,6 @@
 import sys
 
-from nltk.tokenize.moses import MosesTokenizer
+from mosestokenizer import MosesTokenizer
 
 TOK = MosesTokenizer()
 
