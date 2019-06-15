@@ -40,9 +40,13 @@ class BertEmbedderModule(nn.Module):
     def __init__(self, args, cache_dir=None):
         super(BertEmbedderModule, self).__init__()
 
-        self.model = pytorch_pretrained_bert.BertModel.from_pretrained(
-            args.bert_model_name, cache_dir=cache_dir
-        )
+        if args.bert_use_pretrain:
+            self.model = pytorch_pretrained_bert.BertModel.from_pretrained(
+                args.bert_model_name, cache_dir=cache_dir
+            )
+        else:
+            self.config = pytorch_pretrained_bert.BertConfig(args.bert_config_file)
+            self.model = pytorch_pretrained_bert.BertForPretraining(self.config)
         self.embeddings_mode = args.bert_embeddings_mode
 
         tokenizer = pytorch_pretrained_bert.BertTokenizer.from_pretrained(
