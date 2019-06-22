@@ -501,7 +501,7 @@ def main(cl_arguments):
                 # training.
                 pre_finetune_path = get_best_checkpoint_path(args.run_dir)
                 load_model_state(
-                    model, pre_finetune_path, args.cuda, skip_task_models=[], strict=strict
+                    model, args.load_target_train_checkpoint, args.cuda, skip_task_models=[], strict=strict
                 )
             else:  # args.transfer_paradigm == "frozen":
                 # Load the current overall best model.
@@ -509,7 +509,7 @@ def main(cl_arguments):
                 # specific to that target task.
                 load_model_state(
                     model,
-                    layer_path,
+                    args.load_target_train_checkpoint,
                     args.cuda,
                     strict=strict,
                     skip_task_models=task_names_to_avoid_loading,

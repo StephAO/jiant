@@ -46,7 +46,7 @@ class BertEmbedderModule(nn.Module):
             )
         else:
             self.config = pytorch_pretrained_bert.BertConfig(args.bert_config_file)
-            self.model = pytorch_pretrained_bert.BertForPretraining(self.config)
+            self.model = pytorch_pretrained_bert.BertModel(self.config)
         self.embeddings_mode = args.bert_embeddings_mode
 
         tokenizer = pytorch_pretrained_bert.BertTokenizer.from_pretrained(
